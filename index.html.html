@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Time Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    .calculator {
+      width: 300px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      margin-top: 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Onboarding Time Calculator</h1>
+    <label>
+      System Admins:
+      <input type="number" id="systemAdmin" min="0" value="0">
+    </label>
+    <label>
+      Project Managers:
+      <input type="number" id="projectManager" min="0" value="0">
+    </label>
+    <label>
+      Inspectors:
+      <input type="number" id="inspector" min="0" value="0">
+    </label>
+    <button onclick="calculateTime()">Calculate Total Time</button>
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    function calculateTime() {
+      const systemAdminCount = parseInt(document.getElementById('systemAdmin').value) || 0;
+      const projectManagerCount = parseInt(document.getElementById('projectManager').value) || 0;
+      const inspectorCount = parseInt(document.getElementById('inspector').value) || 0;
+
+      const totalTime =
+        systemAdminCount * 7 +
+        projectManagerCount * 6 +
+        inspectorCount * 5;
+
+      document.getElementById('result').innerText = `Estimated Total Onboarding Time: ${totalTime} hours`;
+    }
+  </script>
+</body>
+</html>
